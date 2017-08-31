@@ -30,7 +30,7 @@ var articles = {
         
     },
     'article-three': {
-         title: 'Article Three | Hardik Rathod',
+        title: 'Article Three | Hardik Rathod',
         heading: 'Article Three',
         date: 'Aug 25,2017',
         content:
@@ -38,7 +38,7 @@ var articles = {
             This is the content for my third article.</p>`
         
         
-    }
+    },
 };
 
 function createTemplate(data) {
