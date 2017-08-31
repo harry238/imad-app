@@ -101,7 +101,7 @@ app.get('/ui/style.css', function (req, res) {
 
 app.get('/favicon.ico', function (req, res) {
 
-res.sendFile(path.join(__dirname, 'ui', 'favicon.ico'));
+res.send(path.join(__dirname, 'ui', 'favicon.ico'));
 
 });
 
