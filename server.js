@@ -13,42 +13,6 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles = {
-    'article-one': {
-        title: 'Article One | Hardik Rathod',
-        heading: 'Article One',
-        date: 'Aug 23,2017',
-        content:
-        `<p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-        </p>
-        <p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-        </p>
-        <p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.</p>`
-    },
-    'article-two': {
-        title: 'Article Two | Hardik Rathod',
-        heading: 'Article Two',
-        date: 'Aug 24,2017',
-        content:
-        `<p>
-            This is the content for my second article.</p>`
-        
-    },
-    'article-three': {
-        title: 'Article Three | Hardik Rathod',
-        heading: 'Article Three',
-        date: 'Aug 25,2017',
-        content:
-        `<p>
-            This is the content for my third article.</p>`
-        
-        
-    },
-};
-
 function createTemplate(data) {
     
     var title = data.title;
