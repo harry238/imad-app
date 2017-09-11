@@ -173,7 +173,7 @@ app.post('/submit-comment/:articleName',function(req, res){
     //Check if the user is logged in
     if(req.session && req.session.auth && req.session.auth.userId){
         //First check if the article exits and get the article-id
-        pool.query('SELECT *from article WHERE title = $1', [req.params.articleName], function(err.result) {
+        pool.query('SELECT *from article WHERE title = $1', [req.params.articleName], function(err,result) {
             if(err){
                 res.status(500).send(err.toString());
             } else{
