@@ -9,7 +9,7 @@ function loadCommentForm () {
         <input type = "submit" id = "submit" value = "Submit" />
         <br/>
     `;
-    document.getElementById('comment_form').innerHtml = commentFormHtml;
+    document.getElementById('comment_form').innerHTML = commentFormHtml;
     
     
 var submit = document.getElementById('register_btn');
