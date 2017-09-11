@@ -70,14 +70,15 @@ function loadComents(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
+        var comments = document.getElementById('comments');
             if (request.status === 200){
                 var content = '';
                 var commentData = JSON.parse(this.responseText);
-                for(var i=0; i<commentData.lenght;i++){
+                for(var i=0; i< commentData.lenght; i++){
                     var time = new Date (commentData[i].timestamp);
                     content += `<div class = "comment">
                     <p>${escapeHtml(commentData[i].comment)}</p>
-                    <div class = "commenter>
+                    <div class = "commenter">
                         ${commentData[i].username} -${time.toLocalTimeString()} on ${time.toLocalDateString()}
                     </div>
                     </div>
