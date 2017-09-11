@@ -12,7 +12,7 @@ function loadCommentForm () {
     document.getElementById('comment_form').innerHTML = commentFormHtml;
     
     
-var submit = document.getElementById('register_btn');
+var submit = document.getElementById('submit');
 submit.onclick = function(){
      //Create a request object
     var request = new XMLHttpRequest();
@@ -26,7 +26,7 @@ submit.onclick = function(){
                 document.getElementById('comment_text').value = '';
                 loadcomments();
             } else {
-                alert('Could not submit comment');
+                alert('Error! Could not submit comment');
             }
             submit.value = 'Submit';
     }
@@ -34,7 +34,7 @@ submit.onclick = function(){
     
     //Make the request
     var comment = document.getElementById('comment_text').value;
-    request.open('POST','/submit-comment' + currentArticleTitle, true);
+    request.open('POST', '/submit-comment' + currentArticleTitle, true);
     request.setRequestHeader('Content-Type','application/json');
     request.send(JSON.stringify({comment: comment}));
     submit.value = 'Submitting...';
