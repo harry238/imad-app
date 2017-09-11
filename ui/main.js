@@ -51,7 +51,7 @@ submit.onclick = function(){
 };
 
 var register = document.getElementById('register_btn');
-submit.onclick = function(){
+register.onclick = function(){
      //Create a request object
     var request = new XMLHttpRequest();
     
