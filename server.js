@@ -138,15 +138,15 @@ app.get('/check-login', function (req,res) {
 
 app.get('/logout', function(req,res){
     delete req.session.auth;
-    res.send('Logged out');
+    res.send('<html><body>Logged out!<>br</br><a href ="/">Backe to Home</a></body></html>');
 });
 
 var pool = new Pool(config);
-app.get('/test-db',function(req,res){
+app.get('/get-articles',function(req,res){
     // make a select request
     
     // return a response with the results
-    pool.query('SELECT * FROM test', function(err,result){
+    pool.query('SELECT * FROM article ORDER BY date DESC', function(err,result){
         if(err) {
             res.status(500).send(err.toString());
         } else{
@@ -156,19 +156,45 @@ app.get('/test-db',function(req,res){
 });
 
 
-var counter = 0;
-app.get('/counter', function(req,res){
-    counter = counter + 1;
-    res.send(counter.toString());
+app.get('/get-comments',function(req,res){
+    // make a select request
+    
+    // return a response with the results
+    pool.query('SELECT comment.*,"user".username FROM article, comment, "user" WHERE article.title =$1 AND article.id = comment.article_id', function(err,result){
+        if(err) {
+            res.status(500).send(err.toString());
+        } else{
+            res.send(JSON.stringify(result.rows));
+        }
+    });
 });
 
-var names = [];
-app.get('/submit-name', function(req,res){ // URL:/submit-name?name=xxx
-    //GEt the name From request
-    var name = req.query.name; 
-    names.push(name);
-    // JSON: JAvaScript Object Notation
-    res.send(JSON.stringify(names)); 
+app.post('/submit-comment/:articleName',function(req, res){
+    //Check if the user is logged in
+    if(req.session && req.session.auth && req.session.auth.userId){
+        //First check if the article exits and get the article-id
+        pool.query('SELECT *from article WHERE title = $1', [req.params.articleName], function(err.result) {
+            if(err){
+                res.status(500).send(err.toString());
+            } else{
+                if(result.rows.length === 0){
+                    res.status.send('Article not found');
+                } else {
+                    var articleId = result.rows[0].id;
+                    //Now insert the right comment for this article
+                    pool.query("INSERT INTO comment (comment, article_id,user_id) VALUES ($1,$2,$3)",[req,body.comment, articleId, req.session.auth.userId],function(err,result){
+                        if(err){
+                            res.status(500).send(err.toString());
+                        } else{
+                            res.status(200).send('Comment Inserted!');
+                        }
+                    });
+                }
+            }
+        });
+    } else{
+        res.status(403).send('Only logged in udsers can comment');
+    }
 });
 
 app.get('/articles/:articleName', function(req,res){
