@@ -7,7 +7,7 @@ function loadLoginForm(){
     <input type = "submit" id = "login_btn" placeholder = "Login" />
     <input type = "submit" id = "register_btn" placeholder = "Register" />
     `;
-    document.getElementById('login_area').innerHtml = loginHtml;
+    document.getElementById('login_area').innerHTML = loginHtml;
 
 //Submit username/password to login
 var submit = document.getElementById('login_btn');
@@ -87,7 +87,7 @@ register.onclick = function(){
 
 function loadLoggedInUser (username) {
     var loginArea = document.getElementById('login_area');
-    loginArea.innerHtml = `
+    loginArea.innerHTML = `
         <h3> Hi <i>${username}</i></h3>
         <a href ="/logout">Logout</a>
     `;
