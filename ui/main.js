@@ -124,9 +124,9 @@ function loadArticles (){
                  <a href = "/articles/${articleData[i].title}">${articleData[i].heading}</a>(${articleData[i].date.split('T')[0]})</li>`;
              }
              content +="</ul>"
-             articles.innerHtml = content;
+             articles.innerHTML = content;
           } else{
-              articles.innerHtml('Oops! could not load all articles!')
+              articles.innerHTML('Oops! could not load all articles!')
           }
       }  
     };
