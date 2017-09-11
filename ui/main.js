@@ -130,7 +130,7 @@ function loadArticles (){
           }
       }  
     };
-    request.open('GET','/check-login',true);
+    request.open('GET','/get-articles',true);
     request.send(null);
 }
 
