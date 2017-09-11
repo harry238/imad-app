@@ -66,7 +66,7 @@ function escapeHtml(text){
 }
 
 function loadComents(){
-    //checl if the user is already logged in
+    //check if the user is already logged in
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest){
