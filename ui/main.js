@@ -126,7 +126,7 @@ function loadArticles (){
              content +="</ul>"
              articles.innerHtml = content;
           } else{
-              article.innerHtml('Oops! could not load all articles!')
+              articles.innerHtml('Oops! could not load all articles!')
           }
       }  
     };
