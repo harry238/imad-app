@@ -62,7 +62,7 @@ function escapeHtml(text){
     var $text = document.createTextNode(text);
     var $div = document.createElement('div');
     $div.appendChild($text);
-    return $div.innerHtml;
+    return $div.innerHTML;
 }
 
 function loadComents(){
@@ -83,9 +83,9 @@ function loadComents(){
                     </div>
                     `;
                 }
-                comments.innerHtml = content
+                comments.innerHTML = content
             } else{
-                comments.innerHtml('Oops! Could not load comments!');
+                comments.innerHTML('Oops! Could not load comments!');
             }
         }
     };
